@@ -1,27 +1,15 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fieldstone Goods — Shop</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../staticfiles/css/style.css">
 </head>
 <body>
 
-<!--
-  Integration notes for Django:
-  - Replace static product markup in #product-grid with a
-    {% for product in products %} loop; each card's data stays the same shape.
-  - Add {% csrf_token %} inside every <form method="post"> below.
-  - The toast container is pre-wired: render Django's messages framework as
-      {% for message in messages %}
-        <div class="toast toast--{{ message.tags }}" role="status">
-          {{ message }}
-          <button type="button" class="toast__close" aria-label="Dismiss notification">&times;</button>
-        </div>
-      {% endfor %}
-    js/main.js will auto-display and auto-dismiss each one; no extra JS needed.
--->
+
 
 <header class="site-header">
   <div class="container site-header__bar">
@@ -135,7 +123,7 @@
               <span class="price-now">$54</span>
             </div>
             <form class="add-to-cart-form" method="post" action="#">
-              <!-- {% csrf_token %} -->
+              {% csrf_token %}
               <input type="hidden" name="product_id" value="102">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
@@ -158,7 +146,7 @@
               <span class="price-old">$69</span>
             </div>
             <form class="add-to-cart-form" method="post" action="#">
-              <!-- {% csrf_token %} -->
+              {% csrf_token %}
               <input type="hidden" name="product_id" value="103">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
@@ -179,7 +167,7 @@
               <span class="price-now">$96</span>
             </div>
             <form class="add-to-cart-form" method="post" action="#">
-              <!-- {% csrf_token %} -->
+              {% csrf_token %}
               <input type="hidden" name="product_id" value="104">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
@@ -200,7 +188,7 @@
               <span class="price-now">$42</span>
             </div>
             <form class="add-to-cart-form" method="post" action="#">
-              <!-- {% csrf_token %} -->
+              {% csrf_token %}
               <input type="hidden" name="product_id" value="105">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
@@ -223,7 +211,7 @@
               <span class="price-old">$36</span>
             </div>
             <form class="add-to-cart-form" method="post" action="#">
-              <!-- {% csrf_token %} -->
+              {% csrf_token %}
               <input type="hidden" name="product_id" value="106">
               <input type="hidden" name="quantity" value="1">
               <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
@@ -266,7 +254,7 @@
           <span class="price-old">$48</span>
         </div>
         <form method="post" action="#" data-autofocus>
-          <!-- {% csrf_token %} -->
+          {% csrf_token %}
           <input type="hidden" name="product_id" value="101">
           <div class="qty-select">
             <label for="qty-modal-1" class="visually-hidden">Quantity</label>
@@ -287,6 +275,6 @@
   <!-- Server-rendered Django messages land here; see integration note above. -->
 </div>
 
-<script src="js/main.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
